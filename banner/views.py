@@ -2,13 +2,25 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.contrib.auth.decorators import login_required
 from banner.models import Banner, BookingPeriod, PricePeriod
-from .forms import BookingForm, PriceForm
+from .forms import BookingForm, PriceForm, BannerForm
 
 
 @login_required(login_url='/admin')
 def home(request):
-    banner_list = Banner.objects.filter(user=request.user)
-    return render(request, 'home.html', {'banner_list': banner_list})
+    if request.method == 'POST':
+        banner_form = BannerForm(request.POST)
+        if banner_form.is_valid():
+            banner_model = Banner()
+            banner_model.name = banner_form.cleaned_data['name']
+            banner_model.user = request.user
+            banner_model.save()
+            return HttpResponseRedirect('/')
+        banner_list = Banner.objects.filter(user=request.user)
+        return render(request, 'home.html', {'banner_list': banner_list, 'form': banner_form})
+    else:
+        banner_list = Banner.objects.filter(user=request.user)
+        banner_form = BannerForm()
+        return render(request, 'home.html', {'banner_list': banner_list, 'form': banner_form})
 
 
 @login_required(login_url='/admin')

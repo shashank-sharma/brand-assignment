@@ -3,6 +3,13 @@ from django.forms import ModelForm
 from .models import BookingPeriod, PricePeriod, Banner
 
 
+
+class BannerForm(ModelForm):
+    class Meta:
+        model = Banner
+        fields = ['name']
+
+
 # Forms for views, clean method is as same as models one
 class BookingForm(ModelForm):
     class Meta:

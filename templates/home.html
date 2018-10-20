@@ -11,5 +11,12 @@
 <h3><a href="/{{ banner.id }}">{{ banner.name }}</a></h3>
 
 {% endfor %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+      {{ error }}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
 </body>
 </html>
