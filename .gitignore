@@ -1,0 +1,12 @@
+.installed.cfg
+.DS_Store
+.idea/*
+*.iml
+*/__pycache__/*
+db.sqlite3
+*.pyc
+pyenv
+myvenv
+.env
+env
+local_settings.py

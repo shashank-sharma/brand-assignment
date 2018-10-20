@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ banner }}</h1>
+<p>{{ banner.create_time }}</p>
+<hr>
+<h3>Booking Period:</h3>
+{% for booking_period in booking_period_list %}
+
+    <!-- Could have used base tag -->
+    <a href="{{ banner.id }}/booking/{{ booking_period.id }}">{{ forloop.counter }} | {{ booking_period.booking_start_date }} - {{ booking_period.booking_end_date }}</a>
+    <br>
+{% endfor %}
+<a href="{{ banner.id }}/booking/add">Add more</a>
+<hr>
+<h3>Price Period:</h3>
+{% for price_period in price_period_list %}
+
+    <!-- Could have used base tag -->
+    <a href="{{ banner.id }}/price/{{ price_period.id }}"><b>Rs. {{ price_period.price }}</b> |
+    {{ price_period.price_start_date }} - {{ price_period.price_end_date }}</a>
+    <br>
+{% endfor %}
+<a href="{{ banner.id }}/price/add">Add more</a>
+</body>
+</html>

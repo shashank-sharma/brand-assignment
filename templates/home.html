@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h1>Hello World !</h1>
+{% for banner in banner_list %}
+
+<h3><a href="/{{ banner.id }}">{{ banner.name }}</a></h3>
+
+{% endfor %}
+</body>
+</html>
