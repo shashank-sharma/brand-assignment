@@ -85,8 +85,9 @@ def price_edit(request, banner_id, price_id='add'):
                 price_form = PriceForm(banner_id=banner_id)
             else:
                 price_period = PricePeriod.objects.get(id=price_id)
-                price_form = PriceForm(initial={'price_start_date': price_period.price_start_date,
-                                                  'price_end_date': price_period.price_end_date})
+                price_form = PriceForm(banner_id=banner_id, initial={'price_start_date': price_period.price_start_date,
+                                                  'price_end_date': price_period.price_end_date,
+                                                'price': price_period.price})
             return render(request, 'price_edit.html', {'form': price_form})
         except:
             return render(request, '404.html', {})
