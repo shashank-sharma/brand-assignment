@@ -1,5 +1,7 @@
 ### Instructions
 
+This repository was meant to be a solution for an assignment given, related to survey
+
 Result: Selected
 
 1. Clone
